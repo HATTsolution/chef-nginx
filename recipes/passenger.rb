@@ -36,9 +36,10 @@ package "ruby-devel" do
   action :install
 end
 
-gem_package 'passenger' do
+rvm_gem 'passenger' do
   action :install
   version node["nginx"]["passenger"]["version"]
+  user node["passenger"]["user"]
 end
 
 template "#{node["nginx"]["dir"]}/conf.d/passenger.conf" do
